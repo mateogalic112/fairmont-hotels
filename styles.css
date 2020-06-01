@@ -686,17 +686,31 @@ footer {
   margin-bottom: .5em;
 }
 
-.booking-content h5 {
+.booking-content h3 {
   margin-top: .5em;
   margin-bottom: .5em;
-  font-size: 1.4em;
+  font-size: 1.6em;
+}
+
+.booking-content h4 {
+  font-size: 2.8em;
+}
+
+.booking-content h5 {
+  margin: .5em 0;
+  font-size: 1.5em;
 }
 
 .total-container {
-  align-self: flex-end;
-  margin-right: 20%;
-  font-size: 1.5em;
+  display: flex;
+  align-items: center;
 }
+
+.total-container h3 {
+  font-size: 3em;
+  margin-right: .5em;
+}
+
 
 /* Rooms End */
 
