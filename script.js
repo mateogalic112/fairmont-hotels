@@ -127,37 +127,15 @@ function clearRooms() {
 
 // Filter za Tip Sobe
 var roomType = document.getElementById("type");
-roomType.addEventListener("change", roomTypeChanged);
-
-function roomTypeChanged(event) {
-  var roomType = event.target;
-  var roomTypeSelected = roomType.options[roomType.selectedIndex].text;
-  console.log(roomTypeSelected);
-  clearRooms();
-  filteredRooms = rooms.filter(
-    (room) => (room.name.split(" ")[0] == roomTypeSelected)
-  );
-  roomState(filteredRooms);
-}
+roomType.addEventListener("change", searchFilteredRooms);
 
 // Filter za Broj Gostiju
 var guestNumber = document.getElementById("guest");
-guestNumber.addEventListener("change", guestNumberChanged);
-
-function guestNumberChanged(event) {
-  var guestNumber = event.target;
-  var guestNumberSelected = guestNumber.options[guestNumber.selectedIndex].text;
-  console.log(guestNumberSelected);
-  clearRooms();
-  filteredRooms = rooms.filter(
-    (room) => (room.person >= guestNumberSelected)
-  );
-  roomState(filteredRooms);
-}
+guestNumber.addEventListener("change", searchFilteredRooms);
 
 // Filteri za Cijenu Sobe
 var minRoomPrice = document.getElementById("minPrice");
-minRoomPrice.addEventListener("change", minPriceChanged);
+minRoomPrice.addEventListener("change", searchFilteredRooms);
 
 function minPriceChanged(event) {
   var input = event.target;
@@ -168,7 +146,7 @@ function minPriceChanged(event) {
 }
 
 var maxRoomPrice = document.getElementById("maxPrice");
-maxRoomPrice.addEventListener("change", maxPriceChanged);
+maxRoomPrice.addEventListener("change", searchFilteredRooms);
 
 function maxPriceChanged(event) {
   var input = event.target;
@@ -180,12 +158,49 @@ function maxPriceChanged(event) {
 
 // Filter za Ljubimce
 var pets = document.getElementById("pets");
-pets.addEventListener("change", function () {
-  return this.checked;
-});
+pets.addEventListener("change", searchFilteredRooms);
 
 // Filter za Pusenje
 var smoke = document.getElementById("smoking");
-smoking.addEventListener("change", function () {
-  return this.checked;
-});
+smoking.addEventListener("change", searchFilteredRooms);
+
+// Search Filtered Rooms
+/* var searchButton = document.getElementById('search');
+searchButton.addEventListener('click', searchFilteredRooms); */
+
+function searchFilteredRooms() {
+  // Rooms for modification
+  var newRooms = rooms;
+  // Room Type
+  var roomType = document.getElementById('type');
+  var roomTypeSelected = roomType.options[roomType.selectedIndex].text;
+  // Number of Guests
+  var guest = document.getElementById('guest');
+  var guestNumberSelected = guest.options[guest.selectedIndex].text;
+  // Price Range
+  var minRoomPrice = document.getElementById('minPrice');
+  var minRoomPriceSet = minRoomPrice.value;
+  var maxRoomPrice = document.getElementById('maxPrice');
+  var maxRoomPriceSet = maxRoomPrice.value;
+  // Pets
+  var pets = document.getElementById('pets');
+  var petsSet = pets.checked;
+  // Smoking
+  var smoke = document.getElementById('smoking');
+  var smokeSet = smoke.checked;
+
+  // Clear Rooms before Filter
+  clearRooms();
+  // Filter rooms
+  newRooms = newRooms.filter(room => ((room.name.split(' ')[0] === roomTypeSelected) || roomTypeSelected === 'All')
+    && (room.person >= guestNumberSelected || guestNumberSelected === '-') 
+    && (room.price >= minRoomPriceSet) 
+    && (room.price <= maxRoomPriceSet) 
+    && ((petsSet) ? room.pets == petsSet : true) 
+    && ((smokeSet) ? room.smoking == smokeSet : true)  
+  );
+  console.log(newRooms);
+  
+  roomState(newRooms);
+}
+
