@@ -45,13 +45,18 @@
       <main class="page-body">
         <!-- Rooms Filter Start -->
         <div class="filter-rooms-container">
-          <form name="filter-rooms">
-            <select id="type">
-              <option value="single">Single</option>
-              <option value="double">Double</option>
-              <option value="family">Family</option>
-            </select>
-            <select id="guest">
+          <form id="filterRooms">
+            <div class="room-label">
+              <h3>Room Type</h3>
+              <select id="type">
+                <option value="single">Single</option>
+                <option value="double">Double</option>
+                <option value="family">Family</option>
+              </select>
+            </div>
+            <div class="room-label">
+              <h3>Persons</h3>
+              <select id="guest">
                 <option value="1">1</option>
                 <option value="2">2</option>
                 <option value="3">3</option>
@@ -59,6 +64,30 @@
                 <option value="5">5</option>
                 <option value="6">6</option>
               </select>
+            </div>
+            <div class="room-label">
+              <h3>Price Range</h3>
+              <input
+                type="text"
+                id="minPrice"
+                name="minPrice"
+                value="199.99"
+              /><br />
+              <input
+                type="text"
+                id="maxPrice"
+                name="maxPrice"
+                value="699.99"
+              />
+            </div>
+            <div class="room-label special">
+              <h3>Pets</h3>
+              <input type="checkbox" name="pets" id="pets" value="pets" />
+            </div>
+            <div class="room-label special">
+              <h3>Smoking</h3>
+              <input type="checkbox" name="smoking" id="smoking" value="smoking" />
+            </div>
           </form>
         </div>
         <!-- Rooms Filter End -->
@@ -178,5 +207,6 @@
       </main>
       <!-- Main Room Area End -->
     </div>
+    <script src="script.js"></script>
   </body>
 </html>

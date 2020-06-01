@@ -262,6 +262,7 @@ cite {
   align-items: center;
   background-color: var(--primaryColor);
   height: 90vh;
+  overflow-y: scroll;
 }
 
 .featured-rooms h3 {
@@ -486,11 +487,64 @@ footer {
 
 /* Rooms Start */
 
+.page-body {
+  display: flex;
+}
+
+.filter-rooms-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex: 1;
+  background-color: var(--bgColor);
+  padding: 1em 2em;
+}
+
+.room-label {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  border-bottom: 1px solid var(--buttonColor);
+  padding: 1em;
+}
+
+.special {
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-evenly;
+}
+
+.room-label h3 {
+  font-size: 1.5em;
+  letter-spacing: 1px;
+}
+
+#type {
+  width: 140px;
+  padding: .3em 1em;
+}
+
+#guest {
+  width: 50px;
+  padding: .3em .5em;;
+}
+
+#filterRooms input {
+  padding: .5em 1em;
+}
+
+#filterRooms input[type='checkbox'] {
+  height: 20px;
+  width: 20px;
+}
+
 .rooms-list {
   display: flex;
   flex-wrap: wrap;
   padding: 2em 4em;
   justify-content: center;
+  flex: 4;
 }
 
 .room-item {
@@ -584,6 +638,7 @@ footer {
   transform: rotate(10deg);
   padding: .5em 2em;
   border: 2px solid var(--buttonColor);
+  border-radius: 50%;
 }
 
 .special-offer h3 {
