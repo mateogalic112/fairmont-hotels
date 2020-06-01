@@ -45,6 +45,7 @@
       <main class="page-body">
         <!-- Rooms Filter Start -->
         <div class="filter-rooms-container">
+          <h2>Filter Rooms</h2>
           <form id="filterRooms">
             <div class="room-label">
               <h3>Room Type</h3>
@@ -99,6 +100,35 @@
         </div>
         <!-- Rooms List End -->
         <!-- Choose Package Start -->
+        <div class="booking-content">
+          <h2>Book Now</h2>
+          <form name="booking">
+            <div class="room-label">
+              <h3>Full Name</h3>
+              <input type="text" placeholder="Name" id="name" value="" required>
+            </div>
+            <div class="room-label">
+              <h3>Email</h3>
+              <input type="email"placeholder="Email" id="email" value="">
+            </div>
+            <div class="room-label">
+              <h3>Check-In</h3>
+              <input type="date" id="checkin" name="checkin">
+            </div>
+            <div class="room-label">
+              <h3>Check-Out</h3>
+              <input type="date" id="checkout" name="checkout">
+            </div>
+            <div class="room-label" id="selectedRoom"">
+              <h3>Selected Room</h3>
+              <h5>Single Premium Room</h5>
+            </div>
+          </form>
+          <div class="total-container">
+            <h2>Total</h2>
+            <h4>$23.59</h4>
+          </div>
+        </div>
         <!-- Choose Package End -->
       </main>
       <!-- Main Room Area End -->
