@@ -24,7 +24,6 @@ function Room(
 }
 
 // Room Array
-
 const rooms = [
   new Room(
     "Single Economy Room",
@@ -63,9 +62,6 @@ const rooms = [
     true
   ),
 ];
-
-// Rooms for manipulation
-var filteredRooms = rooms;
 
 // Umetanje soba na stranicu
 function roomState(currentRooms) {
@@ -115,7 +111,7 @@ function roomState(currentRooms) {
   `;
   }
 }
-roomState(filteredRooms);
+roomState(rooms);
 
 // Clear Rooms Before Filter
 function clearRooms() {
@@ -135,25 +131,25 @@ guestNumber.addEventListener("change", searchFilteredRooms);
 
 // Filteri za Cijenu Sobe
 var minRoomPrice = document.getElementById("minPrice");
-minRoomPrice.addEventListener("change", searchFilteredRooms);
-
+minRoomPrice.addEventListener("change", minPriceChanged);
+// Validacija za min price
 function minPriceChanged(event) {
   var input = event.target;
   if (isNaN(input.value) || input.value < 199.99 || input.value > 699.99) {
     input.value = 199.99;
   }
-  console.log(input.value);
+  searchFilteredRooms();
 }
 
 var maxRoomPrice = document.getElementById("maxPrice");
-maxRoomPrice.addEventListener("change", searchFilteredRooms);
-
+maxRoomPrice.addEventListener("change", maxPriceChanged);
+// Validacija za max price
 function maxPriceChanged(event) {
   var input = event.target;
   if (isNaN(input.value) || input.value < 199.99 || input.value > 699.99) {
     input.value = 699.99;
   }
-  console.log(input.value);
+  searchFilteredRooms();
 }
 
 // Filter za Ljubimce
@@ -164,10 +160,8 @@ pets.addEventListener("change", searchFilteredRooms);
 var smoke = document.getElementById("smoking");
 smoking.addEventListener("change", searchFilteredRooms);
 
-// Search Filtered Rooms
-/* var searchButton = document.getElementById('search');
-searchButton.addEventListener('click', searchFilteredRooms); */
 
+// Rooms filter
 function searchFilteredRooms() {
   // Rooms for modification
   var newRooms = rooms;
@@ -187,7 +181,7 @@ function searchFilteredRooms() {
   var petsSet = pets.checked;
   // Smoking
   var smoke = document.getElementById('smoking');
-  var smokeSet = smoke.checked;
+  var smokeSet = smoke.checked;  
 
   // Clear Rooms before Filter
   clearRooms();
@@ -199,8 +193,7 @@ function searchFilteredRooms() {
     && ((petsSet) ? room.pets == petsSet : true) 
     && ((smokeSet) ? room.smoking == smokeSet : true)  
   );
-  console.log(newRooms);
-  
+  // Make them appear in website
   roomState(newRooms);
 }
 
