@@ -49,6 +49,7 @@
             <div class="room-label">
               <h3>Room Type</h3>
               <select id="type">
+                <option value="all">All</option>
                 <option value="single">Single</option>
                 <option value="double">Double</option>
                 <option value="family">Family</option>
@@ -57,6 +58,7 @@
             <div class="room-label">
               <h3>Persons</h3>
               <select id="guest">
+                <option value="0">-</option>
                 <option value="1">1</option>
                 <option value="2">2</option>
                 <option value="3">3</option>
@@ -88,118 +90,14 @@
               <h3>Smoking</h3>
               <input type="checkbox" name="smoking" id="smoking" value="smoking" />
             </div>
+            
+            <input type="button" value="Search" id="search">
           </form>
         </div>
         <!-- Rooms Filter End -->
         <!-- Rooms List Start -->
         <div class="rooms-list">
-          <article class="room-item">
-            <h4>Room Name</h4>
-            <img
-              src="https://images.pexels.com/photos/1267438/pexels-photo-1267438.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940"
-              width="180"
-              height="180"
-              alt="presidental-room"
-            />
-            <div class="room-details">
-              <h6>Detail Info</h6>
-              <p>
-                Lorem ipsum, dolor sit amet consectetur adipisicing elit. Beatae
-                nostrum ipsa reiciendis exercitationem quisquam illo tenetur
-                nisi nihil itaque reprehenderit illum, explicabo possimus
-                aliquam sunt voluptatibus voluptatum placeat dicta architecto.
-              </p>
-            </div>
-            <div class="room-extras">
-              <h5>Extras</h5>
-              <div class="room-specials">
-                <ul class="extras">
-                  <li><span>Spectacular View</span></li>
-                  <li><span>Private Pool</span></li>
-                  <li><span>Welcome Surprise</span></li>
-                </ul>
-                <div class="rating">
-                  <h3>4.5</h3>
-                </div>
-              </div>
-            </div>
-            <button class="offer-button">$699,99 /night</button>
-            <div class="special-offer">
-              <h3>Special Offer</h3>
-            </div>
-          </article>
-
-          <article class="room-item">
-            <h4>Room Name</h4>
-            <img
-              src="https://images.pexels.com/photos/1267438/pexels-photo-1267438.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940"
-              width="180"
-              height="180"
-              alt="presidental-room"
-            />
-            <div class="room-details">
-              <h6>Detail Info</h6>
-              <p>
-                Lorem ipsum, dolor sit amet consectetur adipisicing elit. Beatae
-                nostrum ipsa reiciendis exercitationem quisquam illo tenetur
-                nisi nihil itaque reprehenderit illum, explicabo possimus
-                aliquam sunt voluptatibus voluptatum placeat dicta architecto.
-              </p>
-            </div>
-            <div class="room-extras">
-              <h5>Extras</h5>
-              <div class="room-specials">
-                <ul class="extras">
-                  <li><span>Spectacular View</span></li>
-                  <li><span>Private Pool</span></li>
-                  <li><span>Welcome Surprise</span></li>
-                </ul>
-                <div class="rating">
-                  <h3>4.5</h3>
-                </div>
-              </div>
-            </div>
-            <button class="offer-button">$699,99 /night</button>
-            <div class="special-offer">
-              <h3>Special Offer</h3>
-            </div>
-          </article>
-
-          <article class="room-item">
-            <h4>Room Name</h4>
-            <img
-              src="https://images.pexels.com/photos/1267438/pexels-photo-1267438.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940"
-              width="180"
-              height="180"
-              alt="presidental-room"
-            />
-            <div class="room-details">
-              <h6>Detail Info</h6>
-              <p>
-                Lorem ipsum, dolor sit amet consectetur adipisicing elit. Beatae
-                nostrum ipsa reiciendis exercitationem quisquam illo tenetur
-                nisi nihil itaque reprehenderit illum, explicabo possimus
-                aliquam sunt voluptatibus voluptatum placeat dicta architecto.
-              </p>
-            </div>
-            <div class="room-extras">
-              <h5>Extras</h5>
-              <div class="room-specials">
-                <ul class="extras">
-                  <li><span>Spectacular View</span></li>
-                  <li><span>Private Pool</span></li>
-                  <li><span>Welcome Surprise</span></li>
-                </ul>
-                <div class="rating">
-                  <h3>4.5</h3>
-                </div>
-              </div>
-            </div>
-            <button class="offer-button">$699,99 /night</button>
-            <div class="special-offer">
-              <h3>Special Offer</h3>
-            </div>
-          </article>
+          <!-- JS Filtered Rooms Coming Here -->
         </div>
         <!-- Rooms List End -->
         <!-- Choose Package Start -->
