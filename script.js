@@ -1,4 +1,3 @@
-
 // Objekt iz funkcije
 function Room(
   name,
@@ -16,42 +15,44 @@ function Room(
 }
 
 // Room Array
-const rooms = [
-  Room(
-    "Single Economy Room",
-    1,
-    199.99,
-    false,
-    false,
-    4.3,
-    ["Free Wi-Fi"],
-    "https://images.pexels.com/photos/271624/pexels-photo-271624.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
-    "The standard single room at Hotel Waldinger is a great choice for any guest! Whether you are in Osijek for business or tourism, our standard single rooms provide complete comfort during your stay.",
-    false
-  ),
-  Room(
-    "Single Premium Room",
-    1,
-    220.99,
-    true,
-    false,
-    4.5,
-    ["Free Wi-Fi, Large Balcony"],
-    "https://images.pexels.com/photos/271619/pexels-photo-271619.jpeg?auto=compress&cs=tinysrgb&dpr=3&h=750&w=1260",
-    "Bed sizes are 120 x 210 cm and all rooms are equipped with work desks. Bathrooms feature showers.",
-    true
-  ),
-];
+let room1 = new Room(
+  "Single Economy Room",
+  1,
+  199.99,
+  false,
+  false,
+  4.3,
+  ["Free Wi-Fi"],
+  "https://images.pexels.com/photos/271624/pexels-photo-271624.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
+  "The standard single room at Hotel Waldinger is a great choice for any guest! Whether you are in Osijek for business or tourism, our standard single rooms provide complete comfort during your stay.",
+  false
+);
+
+let room2 = new Room(
+  "Single Premium Room",
+  1,
+  220.99,
+  true,
+  false,
+  4.5,
+  ["Free Wi-Fi, Large Balcony"],
+  "https://images.pexels.com/photos/271619/pexels-photo-271619.jpeg?auto=compress&cs=tinysrgb&dpr=3&h=750&w=1260",
+  "Bed sizes are 120 x 210 cm and all rooms are equipped with work desks. Bathrooms feature showers.",
+  true
+);
+const rooms = [room1, room2];
 
 // Umetanje soba na stranicu
-var roomsList = document.getElementsByClassName('rooms-list')[0];
-rooms.map(room => createRoomArticle(room));
+var roomsList = document.getElementsByClassName("rooms-list")[0];
+rooms.map(createRoomArticle);
 
 function createRoomArticle(room) {
-    var roomItem = document.createElement('article');
-    roomItem.classList.add('room-item');
-    var roomItemContents = `
-        <h4>${rooms}</h4>
+  console.log(room);
+
+  var roomItem = document.createElement("article");
+  roomItem.classList.add("room-item");
+  var roomItemContents = `
+        <h4>3</h4>
         <img
             src="https://images.pexels.com/photos/1267438/pexels-photo-1267438.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940"
             width="180"
@@ -84,9 +85,9 @@ function createRoomArticle(room) {
         <div class="special-offer">
             <h3>Special Offer</h3>
         </div>
-    `
-    roomItem.innerHTML = roomItemContents;
-    roomsList.append(roomItem);
+    `;
+  roomItem.innerHTML = roomItemContents;
+  roomsList.append(roomItem);
 }
 
 // Filter za Tip Sobe
