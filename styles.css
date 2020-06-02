@@ -661,12 +661,15 @@ footer {
 }
 
 .booking-content {
+  position: sticky;
+  top: 10vh;
   display: flex;
   flex-direction: column;
   align-items: center;
   flex: 1;
   background-color: var(--bgColor);
   padding: 1em 2em;
+  height: 90vh;
 }
 
 .booking-content .room-label {
@@ -683,7 +686,7 @@ footer {
   font-size: 2.5em;
   letter-spacing: 1px;
   border-bottom: 1px solid var(--buttonColor);
-  margin-bottom: .5em;
+  margin-bottom: .2em;
 }
 
 .booking-content h3 {
@@ -704,6 +707,9 @@ footer {
 .total-container {
   display: flex;
   align-items: center;
+  justify-content: flex-end;
+  margin-top: -1.5em;
+  margin-bottom: -2.5em;
 }
 
 .total-container h3 {
@@ -711,6 +717,11 @@ footer {
   margin-right: .5em;
 }
 
+#book-btn {
+  padding: 1em;
+  width: 100%;
+  margin-left: .5em;
+}
 
 /* Rooms End */
 
