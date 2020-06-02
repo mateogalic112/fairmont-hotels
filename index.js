@@ -88,7 +88,7 @@ function featuredRooms(rooms) {
       <ul class="extras">
         ${room.extras.map((e) => `<li><span>${e}</span></li>`).join("")}
       </ul>
-      <button class="offer-button">$${room.price} /night</button>
+      <button class="offer-button" onclick="location.href='rooms.html'">$${room.price} /night</button>
       `;
       roomArticle.innerHTML = roomArticleContents;
       featuredRoomsArea.append(roomArticle);
