@@ -207,6 +207,10 @@ function roomFiltering() {
   }
 }
 
+
+// Global Scope Variable Room Price
+var roomPrice = 0;
+
 // Book A Room
 function roomBooking() {
   var roomPriceButtons = document.getElementsByClassName("room-pricing");
@@ -214,8 +218,6 @@ function roomBooking() {
     var button = roomPriceButtons[i];
     button.addEventListener("click", roomSelected);
   }
-
-  var roomPrice = 0;
   // Room Selected Event
   function roomSelected(event) {
     var buttonClicked = event.target;
@@ -239,6 +241,14 @@ function roomBooking() {
 
     calculateTotal();
   }
+}
+
+// Date Changed
+var checkInDate = document.getElementById("checkin");
+checkInDate.addEventListener("change", calculateTotal);
+
+var checkOutDate = document.getElementById("checkout");
+checkOutDate.addEventListener("change", calculateTotal);
 
   // Calculate Total Booking Price
   function calculateTotal() {
@@ -262,19 +272,11 @@ function roomBooking() {
       totalItem.querySelector("h4").innerText.replace("$", "")
     );
 
-    //Todo
+    //Preset Total
     total = roomPrice * diffInDays;
     if (isNaN(total) || total <= 0) total = 0;
     totalItem.querySelector("h4").innerText = "$" + total;
   }
-
-  // Date Changed
-  var checkInDate = document.getElementById("checkin");
-  checkInDate.addEventListener("change", calculateTotal);
-
-  var checkOutDate = document.getElementById("checkout");
-  checkOutDate.addEventListener("change", calculateTotal);
-}
 
 // Booking Button
 var bookingButton = document.getElementById("book-btn");
@@ -284,6 +286,8 @@ function submitBooking(event) {
   // Setting Values in Booking Fields
   var selectedRoomField = document.querySelector("#selectedRoom");
   var selectedRoomFieldH5 = selectedRoomField.querySelector("h5");
+  var custName = document.querySelector('#name').value;
+  var custEmail = document.querySelector('#email').value;
 
   var totalItem = document.querySelector(".total-container");
   var total = parseFloat(
@@ -292,8 +296,7 @@ function submitBooking(event) {
   if (selectedRoomFieldH5.innerText === "Pick Your Room") {
     event.preventDefault();
     alert("Please Pick a Room.");
-  } else if (total <= 0) {
-    event.preventDefault();
+  } else if (total <= 0 || custName.length < 2 || custEmail.length == 0) {
     alert("Some fields are invalid!");
   } else {
     var costumerName = document.getElementById("name").value;
