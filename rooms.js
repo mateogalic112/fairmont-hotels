@@ -108,8 +108,7 @@ function roomFiltering() {
       roomItem.innerHTML = roomItemContents;
       roomsList.append(roomItem);
     }
-    // Ponovo daje click event botunima na karticama
-    roomBooking();
+    roomBooking()
   }
   // Prikaz Special Offera
   function specialOfferDisplay() {
@@ -269,39 +268,39 @@ function roomBooking() {
     totalItem.querySelector("h4").innerText = "$" + total;
   }
 
-  // Booking Button
-  var bookingButton = document.getElementById("book-btn");
-  bookingButton.addEventListener("click", submitBooking);
-
-  function submitBooking(event) {
-    // Setting Values in Booking Fields
-    var selectedRoomField = document.querySelector("#selectedRoom");
-    var selectedRoomFieldH5 = selectedRoomField.querySelector("h5");
-
-    var totalItem = document.querySelector(".total-container");
-    var total = parseFloat(
-      totalItem.querySelector("h4").innerText.replace("$", "")
-    );
-    if (selectedRoomFieldH5.innerText === "Pick Your Room") {
-      //event.preventDefault();
-      alert("Please Pick a Room.");
-    } else if (total <= 0) {
-      //event.preventDefault();
-      alert("Some fields are invalid!");
-    } else {
-      var costumerName = document.getElementById("name").value;
-      alert(
-        `Thank you ${costumerName} for choosing Fairmont for your dream Holiday!`
-      );
-    }
-  }
-
   // Date Changed
   var checkInDate = document.getElementById("checkin");
   checkInDate.addEventListener("change", calculateTotal);
 
   var checkOutDate = document.getElementById("checkout");
   checkOutDate.addEventListener("change", calculateTotal);
+}
+
+// Booking Button
+var bookingButton = document.getElementById("book-btn");
+bookingButton.addEventListener("click", submitBooking);
+
+function submitBooking(event) {
+  // Setting Values in Booking Fields
+  var selectedRoomField = document.querySelector("#selectedRoom");
+  var selectedRoomFieldH5 = selectedRoomField.querySelector("h5");
+
+  var totalItem = document.querySelector(".total-container");
+  var total = parseFloat(
+    totalItem.querySelector("h4").innerText.replace("$", "")
+  );
+  if (selectedRoomFieldH5.innerText === "Pick Your Room") {
+    event.preventDefault();
+    alert("Please Pick a Room.");
+  } else if (total <= 0) {
+    event.preventDefault();
+    alert("Some fields are invalid!");
+  } else {
+    var costumerName = document.getElementById("name").value;
+    alert(
+      `Thank you ${costumerName} for choosing Fairmont for your dream Holiday!`
+    );
+  }
 }
 
 // Calling two main functions
