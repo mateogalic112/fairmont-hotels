@@ -210,11 +210,10 @@ function roomFiltering() {
 
 // Book A Room
 function roomBooking() {
-  
-  var roomPriceButtons = document.getElementsByClassName('room-pricing');
-  for(var i = 0; i < roomPriceButtons.length; i++) {
+  var roomPriceButtons = document.getElementsByClassName("room-pricing");
+  for (var i = 0; i < roomPriceButtons.length; i++) {
     var button = roomPriceButtons[i];
-    button.addEventListener('click', roomSelected);
+    button.addEventListener("click", roomSelected);
   }
 
   var roomPrice = 0;
@@ -222,17 +221,21 @@ function roomBooking() {
   function roomSelected(event) {
     var buttonClicked = event.target;
     var selectedRoomItem = buttonClicked.parentElement;
-    console.log(selectedRoomItem);
-    
+
     // Getting Room Name
-    var selectedRoomName = selectedRoomItem.querySelector('h4').innerText;
+    var selectedRoomName = selectedRoomItem.querySelector("h4").innerText;
     // Getting Room Price
-    var selectedRoomPrice = parseFloat(selectedRoomItem.querySelector('.room-pricing').innerText.replace('$', '').split(' ')[0]);
+    var selectedRoomPrice = parseFloat(
+      selectedRoomItem
+        .querySelector(".room-pricing")
+        .innerText.replace("$", "")
+        .split(" ")[0]
+    );
     roomPrice = selectedRoomPrice;
-    
+
     // Setting Values in Booking Fields
-    var selectedRoomField = document.querySelector('#selectedRoom')
-    var selectedRoomFieldH5 = selectedRoomField.querySelector('h5');
+    var selectedRoomField = document.querySelector("#selectedRoom");
+    var selectedRoomFieldH5 = selectedRoomField.querySelector("h5");
     selectedRoomFieldH5.innerText = selectedRoomName;
 
     calculateTotal();
@@ -241,66 +244,66 @@ function roomBooking() {
   // Calculate Total Booking Price
   function calculateTotal() {
     // Check In Date
-    var checkInDate = document.getElementById('checkin');
+    var checkInDate = document.getElementById("checkin");
     var date1 = new Date(checkInDate.value);
     // Check Out Date
-    var checkOutDate = document.getElementById('checkout');
+    var checkOutDate = document.getElementById("checkout");
     var date2 = new Date(checkOutDate.value);
     // Razlika u danima
     var diffTime = date2 - date1;
-    
-    if(diffTime <= 0) {
-      alert('Provide Valid Dates');
+
+    if (diffTime <= 0) {
+      alert("Provide Valid Dates");
     }
     var diffInDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
-    
+
     // Total Value
-    var totalItem = document.querySelector('.total-container');
-    var total = parseFloat(totalItem.querySelector('h4').innerText.replace('$', ''));
-    console.log(total);
-    
+    var totalItem = document.querySelector(".total-container");
+    var total = parseFloat(
+      totalItem.querySelector("h4").innerText.replace("$", "")
+    );
+
     //Todo
     total = roomPrice * diffInDays;
-    if(isNaN(total) || total <= 0) total = 0;
-    totalItem.querySelector('h4').innerText = '$' + total;
+    if (isNaN(total) || total <= 0) total = 0;
+    totalItem.querySelector("h4").innerText = "$" + total;
   }
 
   // Booking Button
-  var bookingButton = document.getElementById('book-btn');
-  bookingButton.addEventListener('click', submitBooking);
+  var bookingButton = document.getElementById("book-btn");
+  bookingButton.addEventListener("click", submitBooking);
 
   function submitBooking(event) {
     // Setting Values in Booking Fields
-    var selectedRoomField = document.querySelector('#selectedRoom')
-    var selectedRoomFieldH5 = selectedRoomField.querySelector('h5');
+    var selectedRoomField = document.querySelector("#selectedRoom");
+    var selectedRoomFieldH5 = selectedRoomField.querySelector("h5");
 
-    var totalItem = document.querySelector('.total-container');
-    var total = parseFloat(totalItem.querySelector('h4').innerText.replace('$', ''));
-    if(selectedRoomFieldH5.innerText === 'Pick Your Room') {
-      event.preventDefault();
-      alert('Please Pick a Room.');
-      return;
+    var totalItem = document.querySelector(".total-container");
+    var total = parseFloat(
+      totalItem.querySelector("h4").innerText.replace("$", "")
+    );
+    if (selectedRoomFieldH5.innerText === "Pick Your Room") {
+      //event.preventDefault();
+      alert("Please Pick a Room.");
     } else if (total <= 0) {
-      event.preventDefault();
-      return;
+      //event.preventDefault();
+      alert("Some fields are invalid!");
     } else {
-      var costumerName = document.getElementById('name').value;
-      alert(`Thank you ${costumerName} for choosing Fairmont for your dream Holiday!`);
+      var costumerName = document.getElementById("name").value;
+      alert(
+        `Thank you ${costumerName} for choosing Fairmont for your dream Holiday!`
+      );
     }
   }
 
   // Date Changed
-  var checkInDate = document.getElementById('checkin');
-  checkInDate.addEventListener('change', calculateTotal);
+  var checkInDate = document.getElementById("checkin");
+  checkInDate.addEventListener("change", calculateTotal);
 
-  var checkOutDate = document.getElementById('checkout');
-  checkOutDate.addEventListener('change', calculateTotal);
+  var checkOutDate = document.getElementById("checkout");
+  checkOutDate.addEventListener("change", calculateTotal);
 }
 
-// Pokretanje iz main
-function main() {
-  roomFiltering();
-  roomBooking();
-}
-
-main();
+// Calling two main functions
+roomFiltering();
+roomBooking();

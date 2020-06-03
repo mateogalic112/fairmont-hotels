@@ -567,6 +567,7 @@ footer {
   transition: transform 0.3s ease-in;
   max-width: 260px;
   min-width: 220px;
+  max-height: 600px;
   position: relative;
 }
 
