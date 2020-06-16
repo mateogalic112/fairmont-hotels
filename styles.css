@@ -107,8 +107,16 @@ cite {
 .header-bg {
   height: 100%;
   width: 100%;
-  background: url(images/slide4.jpg);
   background-position: center;
+  background: url(images/slide4.jpg);
+  background-size: cover;
+}
+
+.header-bg-gastro {
+  height: 100%;
+  width: 100%;
+  background-position: center;
+  background: url(images/slide2.jpg);
   background-size: cover;
 }
 
@@ -263,7 +271,7 @@ cite {
   align-items: center;
   background-color: var(--primaryColor);
   height: 90vh;
-  overflow-y: scroll;
+  overflow-y: auto;
 }
 
 .featured-rooms h3 {
@@ -569,6 +577,8 @@ footer {
   min-width: 220px;
   max-height: 600px;
   position: relative;
+  border: 2px solid var(--buttonColor);
+  border-radius: 15px;
 }
 
 .room-item:hover {
@@ -725,4 +735,26 @@ footer {
 }
 
 /* Rooms End */
+
+/* Food Start */
+
+.main-article-food {
+  text-align: center;
+  max-width: 500px;
+  flex-direction: row;
+}
+
+.food-section {
+  max-width: 400px;
+}
+
+.food-wrapper {
+  display: flex;
+}
+
+.food-article img {
+  width: 100%;
+}
+
+/* Food End */
 
