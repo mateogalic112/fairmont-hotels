@@ -112,14 +112,6 @@ cite {
   background-size: cover;
 }
 
-.header-bg-gastro {
-  height: 100%;
-  width: 100%;
-  background-position: center;
-  background: url(images/slide2.jpg);
-  background-size: cover;
-}
-
 .slider {
   height: 100%;
   width: 100%;
@@ -258,6 +250,7 @@ cite {
   color: var(--textColor);
   box-shadow: 0px 0px 2px black;
 }
+
 
 .left-content {
   flex: 1;
@@ -738,22 +731,92 @@ footer {
 
 /* Food Start */
 
-.main-article-food {
-  text-align: center;
-  max-width: 500px;
-  flex-direction: row;
+.header-bg-gastro {
+  height: 100%;
+  width: 100%;
+  background-position: center;
+  background: url(images/slide2.jpg);
+  background-size: cover;
 }
 
-.food-section {
-  max-width: 400px;
+
+.title {
+  text-align: center;
+  font-size: 1.2rem;
+}
+
+.underline {
+  width: 5rem;
+  height: 0.2rem;
+  background-color: var(--buttonColor);
+  margin: -1.2rem auto 4rem auto;
+  border-radius: 20px;
+}
+
+.btn-container {
+  display: flex;
+  justify-content: center;
 }
 
 .food-wrapper {
-  display: flex;
+  width: 90vw;
+  margin: 0 auto;
+  max-width: 1170px;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 2rem 1rem;
+  justify-items: center;
 }
 
-.food-article img {
-  width: 100%;
+.food-item {
+  display: grid;
+  grid-template-columns: 1fr 320px;
+  padding: 2rem;
+}
+
+.photo {
+  height: 160px;
+  object-fit: cover;
+  border: 3px solid var(--buttonColor);
+  border-radius: 10px;
+}
+
+.food-info {
+  margin-left: 1rem;
+}
+
+.food-header {
+  display: flex;
+  justify-content: space-between;
+  border-bottom: 1px solid var(--buttonColor);
+  font-size: 1.4rem;
+  margin-top: -1.5rem;
+  padding: 0 1rem;
+}
+
+.food-header h4 {
+  margin-bottom: .2rem;
+}
+
+.food-rating {
+  width: 30px;
+  height: 30px;
+  background-color: var(--buttonColor);
+  border-radius: 50%;
+  margin-top: 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.food-rating h3 {
+  font-size: 1rem;
+  margin-bottom: 0;
+  padding: .1rem;
+}
+
+.food-info p {
+  padding: .4rem 1rem;
 }
 
 /* Food End */
