@@ -1,3 +1,5 @@
+/* Food Area Start */
+
 // Konstrkutor funkcija
 function Food(name, rating, image, description, category) {
   (this.name = name),
@@ -15,7 +17,7 @@ const foods = [
     "https://images.pexels.com/photos/376464/pexels-photo-376464.jpeg?auto=compress&cs=tinysrgb&h=750&w=1260",
     "Pancakes may be served at any time of the day with a variety of toppings or fillings but in America they are typically considered a breakfast food.",
     "breakfast"
-    ),
+  ),
   new Food(
     "Juicy Steak",
     5.0,
@@ -32,7 +34,7 @@ const foods = [
   ),
 ];
 
-window.addEventListener('DOMContentLoaded', function() {
+window.addEventListener("DOMContentLoaded", function () {
   foodState(foods);
   createMenuButtons();
 });
@@ -61,19 +63,19 @@ function createFoodArticle(food, foodList) {
       </p>
     </div>
     `;
-    foodItem.innerHTML = foodItemContents;
-    foodList.append(foodItem);
+  foodItem.innerHTML = foodItemContents;
+  foodList.append(foodItem);
 }
 
 // Kreiraj botune za filter
 function createMenuButtons() {
   // Dohvacanje containera
-  const btnContainer = document.querySelector('.btn-container');
+  const btnContainer = document.querySelector(".btn-container");
 
   // Dohvacanje kategorija iz food itema
   const categories = foods.reduce(
     (items, item) => {
-      if(!items.includes(item.category)) {
+      if (!items.includes(item.category)) {
         items.push(item.category);
       }
       return items;
@@ -83,7 +85,7 @@ function createMenuButtons() {
 
   // Kreiranje filter botuna
   const categoryBtns = categories
-    .map(category => {
+    .map((category) => {
       return `
         <button type="button" class="filter-btn" data-id=${category}>
         ${category} </button>
@@ -92,17 +94,17 @@ function createMenuButtons() {
     .join("");
 
   btnContainer.innerHTML = categoryBtns;
-  const filterBtns = btnContainer.querySelectorAll('.filter-btn');
-  const itemContainer = document.querySelector('.food-wrapper');
+  const filterBtns = btnContainer.querySelectorAll(".filter-btn");
+  const itemContainer = document.querySelector(".food-wrapper");
   //Dodavanje listenera filter botunima
-  filterBtns.forEach(function(btn) {
-    btn.addEventListener("click", function(e) {
+  filterBtns.forEach(function (btn) {
+    btn.addEventListener("click", function (e) {
       const category = e.target.dataset.id;
-      const menuCategory = foods.filter(item => {
-        if(item.category === category) return item;
+      const menuCategory = foods.filter((item) => {
+        if (item.category === category) return item;
       });
       console.log(menuCategory);
-      if(category === "all") {
+      if (category === "all") {
         itemContainer.innerHTML = "";
         foodState(foods);
       } else {
@@ -112,3 +114,24 @@ function createMenuButtons() {
     });
   });
 }
+
+/* Food Area Finish */
+
+/* Wine Area Start */
+
+const rightArrow = document.querySelector(".fa-arrow-right");
+const leftArrow = document.querySelector(".fa-arrow-left");
+const wineList = document.querySelector(".wine-list");
+
+let counter = 1;
+
+rightArrow.addEventListener("click", () => {
+  wineList.style.transform = `translateX(-10 * ${counter}px)`;
+  counter++;
+});
+
+leftArrow.addEventListener("click", () => {
+  wineList.style.transform = `translateX(10 * ${counter}px)`;
+  counter--;
+});
+/* Wine Area Finish*/
