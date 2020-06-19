@@ -122,16 +122,24 @@ function createMenuButtons() {
 const rightArrow = document.querySelector(".fa-arrow-right");
 const leftArrow = document.querySelector(".fa-arrow-left");
 const wineList = document.querySelector(".wine-list");
+const wineListSize = document.getElementsByClassName('wine-card');
+const wineListWrapper = document.querySelector('.wine-list-wrapper');
+let wrapperPositionInfo = wineListWrapper.getBoundingClientRect();
+let wrapperWidth = wrapperPositionInfo.width;
 
-let counter = 1;
+let counter = 0;
 
 rightArrow.addEventListener("click", () => {
-  wineList.style.transform = `translateX(-10 * ${counter}px)`;
-  counter++;
+  if(counter < wineListSize.length - Math.round(wrapperWidth / 200) + 1) {
+    counter++;
+    wineList.style.transform = `translateX(${-200 * counter}px)`;
+  } else return;
 });
 
 leftArrow.addEventListener("click", () => {
-  wineList.style.transform = `translateX(10 * ${counter}px)`;
-  counter--;
+  if(counter > 0) {
+    counter--;
+    wineList.style.transform = `translateX(${-200 * counter}px)`;
+  } else return;
 });
 /* Wine Area Finish*/
