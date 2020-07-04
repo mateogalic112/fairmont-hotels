@@ -89,6 +89,7 @@ cite {
   padding: 1em 0.8em;
   font-size: 2.2em;
   display: block;
+  transition: color .2s linear;
   color: var(--textColor);
 }
 .navbar-links a:hover {
@@ -459,6 +460,7 @@ footer {
 
 .icons-container i {
   font-size: 2.4em;
+  transition: color .3s linear;
 }
 
 .footer-right {
@@ -953,3 +955,164 @@ footer {
 }
 /* Food End */
 
+
+/* Services Start */
+
+.header-bg-services {
+  height: 100%;
+  width: 100%;
+  background: url(images/service.jpeg);
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+/* Services End */
+
+.first-service {
+  height: 30rem;
+  width: 60rem;
+  display: flex;
+}
+
+.img-wrapper {
+  flex: 1;
+}
+
+.img-wrapper img {
+  width: 100%;
+  border: 2px solid var(--buttonColor);
+}
+
+.service-info {
+  flex: 2;
+  padding: 3rem;
+}
+
+.info-heading {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+}
+
+.info-title {
+  display: flex;
+  flex-direction: column;
+}
+
+.service-special {
+  color: var(--buttonColor);
+  font-size: 1.2rem;
+  position: relative;
+  margin: 0;
+  margin-bottom: .6rem;
+}
+
+.service-special::after {
+  content: '';
+  display: block;
+  position: absolute;
+  left: 5rem;
+  top: 50%;
+  transform: translateY(-50%);
+  border-radius: 10rem;
+  width: 3rem;
+  height: 2px;
+  background-color: var(--buttonColor);
+  z-index: 100;
+}
+
+.service-info-title {
+  font-size: 2rem;
+  margin: 0;
+}
+
+.service-fact {
+  background-color: var(--buttonColor);
+  padding: .5rem 1rem;
+  position: relative;
+}
+
+.service-fact::before {
+  content: '';
+  height: 3px;
+  width: 50%;
+  position: absolute;
+  bottom: -3px;
+  left: -3px;
+  background-color: black;
+}
+
+.service-fact::after {
+  content: '';
+  height: 50%;
+  width: 3px;
+  position: absolute;
+  left: -3px;
+  top: 50%;
+  background-color: black;
+}
+
+.service-fact h5 {
+  font-size: .9rem;
+  text-align: center;
+  margin-bottom: 0;
+}
+
+.article-text {
+  display: flex;
+}
+
+.article-text .text-left,
+.article-text .text-left {
+  padding: 0;
+}
+
+.director-area {
+  margin-top: 1rem;
+  display: flex;
+}
+
+.director-info {
+  display: flex;
+  flex: 1;
+}
+
+.director-info .img-wrapper {
+  flex: 1;
+}
+
+.director-info .img-wrapper img {
+  height: 5rem;
+  width: 5rem;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.director-details {
+  flex: 2;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.director-name {
+  font-size: 1.4rem;
+  margin: 0;
+}
+
+.director-details h6 {
+  font-size: 1rem;
+  color: var(--buttonColor);
+  margin: 0;
+}
+
+.signature-wrapper {
+  flex: 1;
+  height: 100%;;
+}
+
+.signature-wrapper img {
+  width: 50%;
+  height: 50%;
+}
