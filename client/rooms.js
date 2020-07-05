@@ -1,72 +1,22 @@
-// Objekt iz funkcije
-function Room(
-  name,
-  person,
-  price,
-  pets,
-  smoking,
-  rating,
-  extras,
-  image,
-  info,
-  specialOffer,
-  featured
-) {
-  (this.name = name),
-    (this.person = person),
-    (this.price = price),
-    (this.pets = pets),
-    (this.smoking = smoking),
-    (this.rating = rating),
-    (this.extras = extras),
-    (this.image = image),
-    (this.info = info),
-    (this.specialOffer = specialOffer),
-    (this.featured = featured);
-}
+const API_URL = "http://localhost:5000/rooms";
 
-// Room Array
-const rooms = [
-  new Room(
-    "Single Economy Room",
-    1,
-    199.99,
-    false,
-    false,
-    4.3,
-    ["Free Wi-Fi"],
-    "https://images.pexels.com/photos/271624/pexels-photo-271624.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
-    "The standard single room at Hotel Waldinger is a great choice for any guest! Whether you are in Osijek for business or tourism, our standard single rooms provide complete comfort during your stay.",
-    false,
-    false
-  ),
-  new Room(
-    "Single Premium Room",
-    1,
-    220.99,
-    true,
-    false,
-    4.5,
-    ["Free Wi-Fi", "Large Balcony"],
-    "https://images.pexels.com/photos/271619/pexels-photo-271619.jpeg?auto=compress&cs=tinysrgb&dpr=3&h=750&w=1260",
-    "Bed sizes are 120 x 210 cm and all rooms are equipped with work desks. Bathrooms feature showers. Smješten nadomak Splita, hotel Le Méridien Lav poziva Vas da istražite svaki kilometar impresivnog jadranskog arhipelaga i smaragdno čistog mora.",
-    true,
-    true
-  ),
-  new Room(
-    "Family Deluxe Room",
-    4,
-    599.99,
-    true,
-    true,
-    4.9,
-    ["Private Garden", "Large Balcony", "Free Pet Area"],
-    "https://images.pexels.com/photos/262048/pexels-photo-262048.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260",
-    "Smješten nadomak Splita, hotel Le Méridien Lav poziva Vas da istražite svaki kilometar impresivnog jadranskog arhipelaga i smaragdno čistog mora. Le Méridien Lav je idealno polazište za putovanje dalmatinskom obalom jer se nalazi u blizini povijesnih gradova.",
-    true,
-    true
-  ),
-];
+// Global Rooms
+let rooms = [];
+
+// List All Rooms
+function listAllRooms() {
+  fetch(API_URL)
+    .then((res) => res.json())
+    .then((items) => {
+      items.forEach((item) => {
+        rooms.push(item);
+      });
+      // Initial Rooms
+      roomState(rooms);
+      // Book Initial Rooms
+      roomBooking();
+    });
+}
 
 // Umetanje soba na stranicu Rooms
 function roomState(currentRooms) {
@@ -298,7 +248,5 @@ function submitBooking(event) {
   }
 }
 
-// Initial Rooms
-roomState(rooms);
-// Initial Booking
-roomBooking();
+//Rooms Array
+listAllRooms();

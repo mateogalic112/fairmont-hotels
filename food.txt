@@ -1,0 +1,23 @@
+db.food.insertMany([
+{
+    name: "Fluffy Pancakes",
+    rating: 4.7,
+    image: "https://images.pexels.com/photos/376464/pexels-photo-376464.jpeg?auto=compress&cs=tinysrgb&h=750&w=1260",
+    description: "Pancakes may be served at any time of the day with a variety of toppings or fillings but in America they are typically considered a breakfast food.",
+    category: "breakfast"
+  },
+  {
+    name: "Juicy Steak",
+    rating: 5.0,
+    image: "https://images.pexels.com/photos/675951/pexels-photo-675951.jpeg?auto=compress&cs=tinysrgb&h=750&w=1260",
+    description: "Steak can also be cooked in sauce, such as in steak and kidney pie, or minced and formed into patties, such as hamburgers.",
+    category: "lunch"
+  },
+  {
+    name: "Sushi Rolls",
+    rating: 4.9,
+    image: "https://images.pexels.com/photos/2098085/pexels-photo-2098085.jpeg?cs=srgb&dl=abendessen-essen-fisch-garnele-2098085.jpg&fm=jpg",
+    description: "When the sushi rice is wrapped in nori seaweed and rolled, it is a Sushi Roll.  In Japan, we call it Makizushi or Maki Sushi (巻き寿司).",
+    category: "dinner"
+  }
+])

@@ -1,0 +1,41 @@
+db.rooms.insertMany([
+	{
+		name: 'Single Economy Room',
+		person: 1,
+		price: 199.99,
+		pets: false,
+		smoking: false,
+		rating: 4.3,
+		extras: ['Free Wi-Fi'],
+		image: 'https://images.pexels.com/photos/271624/pexels-photo-271624.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940',
+		info: 'The standard single room at Hotel Waldinger is a great choice for any guest! Whether you are in Osijek for business or tourism, our standard single rooms provide complete comfort during your stay.',
+		specialOffer: false,
+		featured: false
+	},
+	{
+		name: 'Single Premium Room',
+		person: 1,
+		price: 220.99,
+		pets: true,
+		smoking: false,
+		rating: 4.5,
+		extras: ['Free Wi-Fi', 'Large Balcony'],
+		image: 'https://images.pexels.com/photos/271619/pexels-photo-271619.jpeg?auto=compress&cs=tinysrgb&dpr=3&h=750&w=1260',
+		info: 'The standard single room at Hotel Waldinger is a great choice for any guest! Whether you are in Osijek for business or tourism, our standard single rooms provide complete comfort during your stay.',
+		specialOffer: true,
+		featured: true
+	},
+	{
+		name: 'Family Deluxe Room',
+		person: 4,
+		price: 499.99,
+		pets: true,
+		smoking: true,
+		rating: 4.9,
+		extras: ['Private Garden', 'Large Balcony', 'Free Pet Area'],
+		image: 'https://images.pexels.com/photos/262048/pexels-photo-262048.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260',
+		info: 'The standard single room at Hotel Waldinger is a great choice for any guest! Whether you are in Osijek for business or tourism, our standard single rooms provide complete comfort during your stay.',
+		specialOffer: false,
+		featured: true
+	}
+])

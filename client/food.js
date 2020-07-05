@@ -1,43 +1,27 @@
-/* Food Area Start */
-
-// Konstrkutor funkcija
-function Food(name, rating, image, description, category) {
-  (this.name = name),
-    (this.rating = rating),
-    (this.image = image),
-    (this.description = description),
-    (this.category = category);
-}
-
-// Hard-Kodirani niz Food objekata
-const foods = [
-  new Food(
-    "Fluffy Pancakes",
-    4.7,
-    "https://images.pexels.com/photos/376464/pexels-photo-376464.jpeg?auto=compress&cs=tinysrgb&h=750&w=1260",
-    "Pancakes may be served at any time of the day with a variety of toppings or fillings but in America they are typically considered a breakfast food.",
-    "breakfast"
-  ),
-  new Food(
-    "Juicy Steak",
-    5.0,
-    "https://images.pexels.com/photos/675951/pexels-photo-675951.jpeg?auto=compress&cs=tinysrgb&h=750&w=1260",
-    "Steak can also be cooked in sauce, such as in steak and kidney pie, or minced and formed into patties, such as hamburgers.",
-    "lunch"
-  ),
-  new Food(
-    "Sushi Rolls",
-    4.9,
-    "https://images.pexels.com/photos/2098085/pexels-photo-2098085.jpeg?cs=srgb&dl=abendessen-essen-fisch-garnele-2098085.jpg&fm=jpg",
-    "When the sushi rice is wrapped in nori seaweed and rolled, it is a Sushi Roll.  In Japan, we call it Makizushi or Maki Sushi (巻き寿司).",
-    "dinner"
-  ),
-];
 
 window.addEventListener("DOMContentLoaded", function () {
-  foodState(foods);
-  createMenuButtons();
+  listAllFoods();
+  listAllWines();
 });
+
+const API_URL = 'http://localhost:5000/food';
+
+// Global Foods
+let foods = [];
+
+// List All Foods
+function listAllFoods() {
+  fetch(API_URL)
+    .then((res) => res.json())
+    .then((items) => {
+      items.forEach((item) => {
+        foods.push(item);
+      });
+      // Initial Rooms
+      foodState(foods);
+      createMenuButtons();
+    });
+}
 
 // Umetanje hrane na stranicu
 function foodState(foodArray) {
@@ -119,6 +103,54 @@ function createMenuButtons() {
 
 /* Wine Area Start */
 
+// Wine URL
+const API_URL_W = 'http://localhost:5000/wine';
+
+// Global Wines
+let wines = [];
+
+// List All Wines
+function listAllWines() {
+  fetch(API_URL_W)
+    .then((res) => res.json())
+    .then((items) => {
+      items.forEach((item) => {
+        wines.push(item);
+      });
+      // Initial Wines
+      wineState(wines);
+      console.log(wines);
+      
+    });
+}
+
+// Umetanje vina na stranicu
+function wineState(wineArray) {
+  let wineList = document.querySelector('.wine-list');
+  wineArray.map(wine => createWineArticle(wine, wineList));
+}
+
+// Kreiranje Wine Carda
+function createWineArticle(wine, wineList) {
+  let wineCard = document.createElement("div");
+  wineCard.classList.add('wine-card');
+  wine.category === 'red'
+    ? wineCard.classList.add('red')
+    : wineCard.classList.add('white');
+  let wineCardContent = `
+  <h4>${wine.name}</h4>
+  <div class="card-body">
+    <img src="${wine.image}" alt="wine">
+    <p>
+      ${wine.description}
+    </p>
+    <h3>${wine.year}</h3>
+  </div>
+  `;
+  wineCard.innerHTML = wineCardContent;
+  wineList.append(wineCard);
+}
+
 const rightArrow = document.querySelector(".fa-arrow-right");
 const leftArrow = document.querySelector(".fa-arrow-left");
 const wineList = document.querySelector(".wine-list");
@@ -142,4 +174,5 @@ leftArrow.addEventListener("click", () => {
     wineList.style.transform = `translateX(${-200 * counter}px)`;
   } else return;
 });
+
 /* Wine Area Finish*/

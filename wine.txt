@@ -1,0 +1,23 @@
+db.wine.insertMany([
+	{
+		name: 'Babic Plavac',
+		category: 'red',
+		image: 'https://doubleback.com/wp-content/uploads/2020/01/2017-Estate-Reserve-web_702w.png',
+		description: 'Lorem ipsum dolor sit amet consectetur, adipisicing elit. Deleniti, incidunt.',
+		year: '2000.'
+	},
+	{
+		name: 'Babic Bijelac',
+		category: 'white',
+		image: 'https://doubleback.com/wp-content/uploads/2020/01/2017-Estate-Reserve-web_702w.png',
+		description: 'Lorem ipsum dolor sit amet consectetur, adipisicing elit. Deleniti, incidunt.',
+		year: '1999.'
+	},
+	{
+		name: 'Babic Plavac',
+		category: 'red',
+		image: 'https://doubleback.com/wp-content/uploads/2020/01/2017-Estate-Reserve-web_702w.png',
+		description: 'Lorem ipsum dolor sit amet consectetur, adipisicing elit. Deleniti, incidunt.',
+		year: '2000.'
+	}		
+])
