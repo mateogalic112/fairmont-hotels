@@ -3,20 +3,20 @@ db.wine.insertMany([
 		name: 'Babic Plavac',
 		category: 'red',
 		image: 'https://doubleback.com/wp-content/uploads/2020/01/2017-Estate-Reserve-web_702w.png',
-		description: 'Lorem ipsum dolor sit amet consectetur, adipisicing elit. Deleniti, incidunt.',
+		description: 'Red wine is a type of wine made from dark-colored grape varieties.',
 		year: '2000.'
 	},
 	{
-		name: 'Babic Bijelac',
+		name: 'Bordertown',
 		category: 'white',
-		image: 'https://doubleback.com/wp-content/uploads/2020/01/2017-Estate-Reserve-web_702w.png',
-		description: 'Lorem ipsum dolor sit amet consectetur, adipisicing elit. Deleniti, incidunt.',
+		image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcRtlEGlKzPnDaoiE6XVEIbdPahCxRXFBSBZcA&usqp=CAU',
+		description: 'The actual color of the wine can range from intense violet through to brick red for mature red wines.',
 		year: '1999.'
 	},
 	{
-		name: 'Babic Plavac',
-		category: 'red',
-		image: 'https://doubleback.com/wp-content/uploads/2020/01/2017-Estate-Reserve-web_702w.png',
+		name: 'Edna Valley',
+		category: 'white',
+		image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcTyvb31u-fyiOl10ZQ6jSBqZXRqtJ8sHNOxfg&usqp=CAU',
 		description: 'Lorem ipsum dolor sit amet consectetur, adipisicing elit. Deleniti, incidunt.',
 		year: '2000.'
 	}		
