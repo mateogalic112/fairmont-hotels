@@ -1,3 +1,4 @@
+
 const API_URL = "http://localhost:5000/rooms";
 
 // Global Rooms
@@ -181,7 +182,7 @@ function roomSelected(event) {
   var selectedRoomField = document.querySelector("#selectedRoom");
   var selectedRoomFieldH5 = selectedRoomField.querySelector("h5");
   selectedRoomFieldH5.innerText = selectedRoomName;
-
+  
   calculateTotal();
 }
 
@@ -197,10 +198,17 @@ function calculateTotal() {
   // Check In Date
   var checkInDate = document.getElementById("checkin");
   var date1 = new Date(checkInDate.value);
-  if(date1 < new Date() || date2 < new Date()) alert("Dates are not valid!");
+  if(date1 < new Date()) {
+    alert("Arrival not valid!");
+    checkInDate.value = null;
+  } 
   // Check Out Date
   var checkOutDate = document.getElementById("checkout");
   var date2 = new Date(checkOutDate.value);
+  if (date2 < new Date()) {
+    alert("Departure not valid!");
+    checkOutDate.value = null;
+  }
   // Razlika u danima
   var diffTime = date2 - date1;
 
@@ -231,22 +239,63 @@ function submitBooking(event) {
   var selectedRoomFieldH5 = selectedRoomField.querySelector("h5");
   var custName = document.querySelector("#name").value;
   var custEmail = document.querySelector("#email").value;
-
+  
   var totalItem = document.querySelector(".total-container");
   var total = parseFloat(
     totalItem.querySelector("h4").innerText.replace("$", "")
   );
+
+  var date1 = document.getElementById("checkin").value;
+  var date2 = document.getElementById("checkout").value;
+
+  let desiredRoom = rooms.find(room => room.name === selectedRoomFieldH5.innerText);
+  let roomBookingDates = desiredRoom.booked;
+
+
   if (selectedRoomFieldH5.innerText === "Pick Your Room") {
     event.preventDefault();
     alert("Please Pick a Room.");
   } else if (total <= 0 || custName.length < 2 || custEmail.length == 0) {
     alert("Some fields are invalid!");
   } else {
+
+    if(checkRoomAvailability(date1, date2, roomBookingDates)) {
+      const UPDATE_ROOM_URL = `http://localhost:5000/${desiredRoom._id}`;
+      const booked = [date1, date2];
+      
+      fetch(UPDATE_ROOM_URL, {
+        method: 'PATCH',
+        body: JSON.stringify(booked),
+        headers: {
+          "content-type": "application/json"
+        }
+      })
+    } else {
+      event.preventDefault();
+      return;
+    }
+
     var costumerName = document.getElementById("name").value;
     alert(
       `Thank you ${costumerName} for choosing Fairmont for your dream Holiday!`
     );
   }
+
+}
+
+function checkRoomAvailability(date1, date2, roomBookingDates) {
+  for(let i = 0; i < roomBookingDates.length; ++i) {
+    if(date1 >= roomBookingDates[i][0] && date1 <= roomBookingDates[i][1]) {
+      alert("Arriving date not available! Please try new arriving date!");
+      checkInDate.value = null;
+      return false;
+    } else if (date2 >= roomBookingDates[i][0] && date1 <= roomBookingDates[i][1]) {
+        alert("Departure date not available! Please try new departure date!");
+        checkOutDate.value = null;
+        return false;
+    }
+  }
+  return true;
 }
 
 //Rooms Array
