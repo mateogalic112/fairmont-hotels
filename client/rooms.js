@@ -197,6 +197,7 @@ function calculateTotal() {
   // Check In Date
   var checkInDate = document.getElementById("checkin");
   var date1 = new Date(checkInDate.value);
+  if(date1 < new Date() || date2 < new Date()) alert("Dates are not valid!");
   // Check Out Date
   var checkOutDate = document.getElementById("checkout");
   var date2 = new Date(checkOutDate.value);
@@ -205,7 +206,7 @@ function calculateTotal() {
 
   if (diffTime <= 0) {
     alert("Provide Valid Dates");
-  }
+  } 
   var diffInDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
 
   // Total Value

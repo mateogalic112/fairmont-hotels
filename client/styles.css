@@ -439,16 +439,37 @@ cite {
   margin-top: 4rem;
 }
 
+.review-title {
+  font-size: 2.2rem;
+  text-transform: capitalize;
+  margin-top: 5rem;
+  margin-bottom: 0;
+  position: relative;
+}
+
+.review-title:after {
+  content: '';
+  width: 5rem;
+  height: 0.2rem;
+  background-color: var(--buttonColor);
+  border-radius: 20px;
+  position: absolute;
+  top: 2.4rem;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
 .customer-review {
   width: 20%;
-  height: 60%;
+  height: 50%;
   display: flex;
   flex-direction: column;
   justify-content: space-evenly;
   padding: 2rem;
   position: relative;
   background-color: var(--primaryColor);
-  margin: 4rem 2rem;
+  margin: 0rem 2rem 4rem 2rem;
+  box-shadow: 0 0 5px 2px black;
 }
 
 .customer-name {
@@ -501,18 +522,6 @@ cite {
 .text-review {
   font-style: italic;
   padding: 0 !important;
-}
-
-.customer-avatar {
-  width: 8rem;
-  height: 8rem;
-  border-radius: 50%;
-  object-fit: cover;
-  border: 2px dashed var(--buttonColor);
-  position: absolute;
-  top: -4rem;
-  left: 50%;
-  transform: translateX(-50%);
 }
 
 /* Main Content End */
