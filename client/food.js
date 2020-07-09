@@ -4,7 +4,7 @@ window.addEventListener("DOMContentLoaded", function () {
   listAllWines();
 });
 
-const API_URL = 'http://localhost:5000/food';
+const API_URL = window.location.hostname === 'localhost' ? 'http://localhost:5000/food' : 'https://fairmont-api.mateogalic112.vercel.app/food';
 
 // Global Foods
 let foods = [];
@@ -104,7 +104,7 @@ function createMenuButtons() {
 /* Wine Area Start */
 
 // Wine URL
-const API_URL_W = 'http://localhost:5000/wine';
+const API_URL_W = window.location.hostname === 'localhost' ? 'http://localhost:5000/wine' : 'https://fairmont-api.mateogalic112.vercel.app/wine';
 
 // Global Wines
 let wines = [];
@@ -118,9 +118,7 @@ function listAllWines() {
         wines.push(item);
       });
       // Initial Wines
-      wineState(wines);
-      console.log(wines);
-      
+      wineState(wines); 
     });
 }
 

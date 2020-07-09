@@ -48,9 +48,6 @@ cite {
   font-family: "Dancing Script", cursive;
 }
 
-.main-container {
-  max-width: 1980px;
-}
 
 /* Global Styling End */
 
@@ -184,7 +181,7 @@ cite {
 .btn-primary {
   position: absolute;
   bottom: 20%;
-  left: calc(50% - 4em);
+  left: calc(50% - 3.2em);
   background-color: var(--primaryColor);
   padding: 0.5em 2em;
   font-size: 3.2em;
@@ -327,7 +324,7 @@ cite {
 }
 
 .main-offer-section {
-  max-width: 768;
+  max-width: 768px;
   margin: 5em auto;
   box-shadow: none;
 }
@@ -431,7 +428,6 @@ cite {
 }
 
 .review-wrapper {
-  height: 600px;
   width: 100%;
   display: flex;
   flex-wrap: wrap;
@@ -461,7 +457,7 @@ cite {
 
 .customer-review {
   width: 20%;
-  height: 50%;
+  height: 20rem;
   display: flex;
   flex-direction: column;
   justify-content: space-evenly;
@@ -482,6 +478,7 @@ cite {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  flex-wrap: wrap;
 }
 
 .customer-job {
@@ -594,7 +591,7 @@ footer {
   align-items: center;
   flex: 1;
   background-color: var(--bgColor);
-  padding: 1em 2em;
+  padding: 1em;
 }
 
 .filter-rooms-container h2 {
@@ -646,8 +643,9 @@ footer {
 .rooms-list {
   display: flex;
   flex-wrap: wrap;
-  padding: 2em 4em;
+  padding: 2em 0;
   justify-content: center;
+  align-items: center;
   flex: 4;
 }
 
@@ -656,12 +654,12 @@ footer {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  margin: 5em 4em;
+  margin: 5em 5em;
   padding: 0.5rem 2rem 2rem 2rem;
   box-shadow: 0px 2px 10px 3px var(--textColor);
   transition: transform 0.3s ease-in;
+  min-width: 240px;
   max-width: 260px;
-  min-width: 220px;
   max-height: 600px;
   position: relative;
   border: 2px solid var(--buttonColor);
@@ -761,22 +759,23 @@ footer {
 .booking-content {
   position: sticky;
   top: 10vh;
+  right: 0;
   display: flex;
   flex-direction: column;
   align-items: center;
-  flex: 1;
   background-color: var(--bgColor);
-  padding: 1em 2em;
-  height: 90vh;
+  padding: 1em;
+  flex: 1;
 }
 
 .booking-content .room-label {
-  width: 100%;
+  width: 90%;
   font-size: 1.2em;
+  margin: 0 auto;
 }
 
 .booking-content input {
-  width: 100%;
+  width: 90%;
   padding: 0.4em;
 }
 
@@ -803,6 +802,7 @@ footer {
 }
 
 .total-container {
+  width: 90%;
   display: flex;
   align-items: center;
   justify-content: flex-end;
@@ -817,7 +817,7 @@ footer {
 
 #book-btn {
   padding: 1em;
-  width: 100%;
+  width: 90%;
   margin-left: 0.5em;
 }
 
@@ -885,7 +885,6 @@ footer {
 .food-wrapper {
   width: 90vw;
   margin: 0 auto;
-  max-width: 1170px;
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   gap: 2rem 1rem;
@@ -964,6 +963,7 @@ footer {
   display: flex;
   flex-direction: column;
   align-items: center;
+  margin-bottom: 2rem;
 }
 
 .fa-arrow-left,
@@ -996,7 +996,7 @@ footer {
 .wine-list {
   display: flex;
   width: 100%;
-  height: 360px;
+  height: 380px;
   transition: transform 0.4s ease;
 }
 
@@ -1019,7 +1019,7 @@ footer {
       center no-repeat;
   background-position: center;
   background-size: cover;
-  border: 2px solid rgba(255, 0, 0, 0.274);
+  border: 3px solid rgba(190, 1, 1, 0.664);
 }
 
 .wine-card.white {
@@ -1028,7 +1028,7 @@ footer {
       center no-repeat;
   background-position: center;
   background-size: cover;
-  border: 1px solid rgb(248, 246, 222);
+  border: 2px solid rgb(248, 246, 222);
 }
 
 .wine-card:hover {
@@ -1090,11 +1090,17 @@ footer {
 }
 
 /* Services End */
-
-.first-service {
-  height: 30rem;
+.services-wrapper {
   width: 60rem;
   display: flex;
+  flex-direction: column;
+}
+
+.service {
+  height: 30rem;
+  width: 100%;
+  display: flex;
+  margin: 5rem 0;
 }
 
 .img-wrapper {
@@ -1103,6 +1109,8 @@ footer {
 
 .img-wrapper img {
   width: 100%;
+  height: 90%;
+  object-fit: cover;
   border: 2px solid var(--buttonColor);
 }
 
@@ -1147,6 +1155,7 @@ footer {
 .service-info-title {
   font-size: 2rem;
   margin: 0;
+  text-align: center;
 }
 
 .service-fact {
@@ -1237,4 +1246,308 @@ footer {
 .signature-wrapper img {
   width: 50%;
   height: 50%;
+}
+
+.active {
+  transform: translateX(0) !important;
+}
+
+.bar1.open {
+  transform: rotate(45deg) translate(10px, 0px);
+}
+
+.bar2.open {
+  opacity: 0;
+}
+
+.bar3.open {
+  transform: rotate(-45deg) translate(10px, 0px);
+}
+
+@media (max-width: 1400px) {
+  .food-wrapper {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 1024px) {
+
+  /* Index */
+  .head-banner h1 {
+    width: 70%;
+  }
+
+  .customer-review {
+    width: 50%;
+  }
+
+  /* Rooms */
+
+  /* Gastro */
+  .food-wrapper {
+    grid-template-columns: 1fr;
+  }
+
+  .wine-list-wrapper {
+    max-width: 800px;
+  }
+
+  .fa-arrow-left {
+    left: 0%;
+  }
+
+  .fa-arrow-right {
+    right: 0%;
+  }
+
+  /* Services */
+  .services-wrapper .img-wrapper {
+    flex: 1.5;
+  }
+}
+
+@media (max-width: 768px) {
+
+  /* Index */
+
+  html, body {
+    width: 100%;
+    overflow-x: hidden;
+  }
+
+  .hamburger-menu {
+    position: absolute;
+    top: 4vh;
+    right: 3rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 2rem;
+    height: 1.2rem;
+  }
+
+  .hamburger-menu .bar {
+    height: 3px;
+    width: 100%;
+    background-color: var(--textColor);
+    border-radius: 1rem;
+    transition: transform .5s ease;
+  }
+
+  .navbar-links {
+    position: absolute;
+    top: 10vh;
+    width: 100%;
+    background-color: var(--primaryColor);
+    transform: translateX(100%);
+    transition: transform .8s ease;
+  }
+
+  .navbar-links ul {
+    width: 100%;
+    flex-direction: column;
+  }
+
+  .navbar-links li {
+    margin: 0;
+    text-align: center;
+  }
+
+  .navbar-links li a {
+    font-size: 1.4rem;
+    padding: 1.5rem 0;
+  }
+
+  .navbar-links li:last-child {
+    margin-right: 0;
+  }
+
+  .featured-rooms {
+    display: none;
+  }
+
+  .left-content {
+    display: none;
+  }
+
+  .customer-review {
+    height: 25vh;
+  }
+
+  /* Gastro */
+  .food-wrapper {
+    grid-template-columns: 1fr;
+    max-width: 600px;
+  }
+
+  .wine-list-wrapper {
+    max-width: 600px;
+  }
+
+  .fa-arrow-left {
+    left: -10%;
+  }
+
+  .fa-arrow-right {
+    right: -10%;
+  }
+
+  /* Services */
+  .services-wrapper {
+    max-width: 80%;
+  }
+
+  .service {
+    height: auto;
+    flex-direction: column;
+  }
+
+  .service > .img-wrapper {
+    height: 50rem;
+    object-fit: cover;
+  }
+
+}
+
+@media (max-width: 425px) {
+
+  /* Index */
+  .offer-section {
+    width: 90%;
+    margin: 0 auto;
+    padding: 2rem 0;
+    margin: 2rem 0;
+  }
+
+  .section-article {
+    width: inherit;
+  }
+
+  .article-info h5 {
+    text-align: center;
+  }
+
+  .article-info p {
+    padding: 0 1em;
+  }
+
+  .section-article img {
+    width: 100%;
+  }
+  .customer-review {
+    height: 20rem;
+  }
+
+  footer {
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+  .footer-left {
+    padding-top: 1.4rem;
+  }
+
+  /* Gastro */
+  .btn-container {
+    max-width: 90%;
+    margin: 0 auto;
+  }
+
+  .food-item {
+    grid-template-columns: 260px;
+    gap: 1rem 0
+  }
+
+  .fa-arrow-left {
+    left: 0%;
+  }
+
+  .fa-arrow-right {
+    right: 0%;
+  }
+
+  .wine-list-wrapper {
+    max-width: 300px;
+  }
+
+  .wine-card {
+    width: 150px;
+    min-height: auto;
+  }
+
+  /* Services */
+
+  .service > .img-wrapper {
+    height: 30rem;
+  }
+
+  .service-info {
+    padding: 2em 0;
+  }
+
+  .info-heading {
+    margin-bottom: 1em;
+  }
+
+  .article-text {
+    flex-direction: column;
+    text-align: start;
+  }
+
+  .article-text p {
+    padding: 1em 0;
+  }
+
+  .director-details {
+    margin-left: 1em;
+  }
+  .signature-wrapper {
+    flex: .5;
+  }
+}
+
+@media (max-width: 375px) {
+  .navbar img {
+    height: 5vh;
+  }
+
+  .head-banner h1 {
+    font-size: 5rem;
+  }
+
+  .customer-review {
+    height: 25rem;
+  }
+
+  .fa-arrow-left {
+    left: 4%;
+  }
+
+  .fa-arrow-right {
+    right: 4%;
+  }
+
+  .room-item {
+    padding: 1rem;
+  }
+
+  .btn-container {
+    width: 80%;
+  }
+
+  .food-item {
+    grid-template-columns: 240px;
+  }
+
+  .fa-arrow-left {
+    left: 10%;
+  }
+
+  .wine-list-wrapper {
+    width: 240px;
+  }
+
+  .fa-arrow-right {
+    right: 10%;
+  }
 }

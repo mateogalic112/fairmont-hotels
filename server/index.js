@@ -8,10 +8,16 @@ app.use(cors());
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
-const db = monk("localhost/fairmont");
+const db = monk(process.env.MONGO_URI || "localhost/fairmont");
 const rooms = db.get("rooms");
 const food = db.get("food");
 const wine = db.get("wine");
+
+app.get("/", (req, res) => {
+  res.json({
+    message: "Hello World!"
+  });
+});
 
 app.get("/rooms", (req, res) => {
   rooms.find().then((rooms) => {

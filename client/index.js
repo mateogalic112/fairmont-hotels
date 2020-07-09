@@ -3,7 +3,7 @@ window.addEventListener("DOMContentLoaded", function () {
   listAllFeaturedRooms();
 });
 
-const API_URL = 'http://localhost:5000/rooms';
+const API_URL = window.location.hostname === 'localhost' ? 'http://localhost:5000/rooms' : 'https://fairmont-api.mateogalic112.vercel.app/rooms';
 
 // Global Foods
 let rooms = [];
