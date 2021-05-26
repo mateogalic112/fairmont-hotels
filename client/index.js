@@ -5,7 +5,7 @@ window.addEventListener("DOMContentLoaded", function () {
 const API_URL =
   window.location.hostname === "localhost"
     ? "http://localhost:5000/rooms"
-    : "https://fairmont-api.mateogalic112.vercel.app/rooms";
+    : "https://fairmont-api-mateogalic112.vercel.app/rooms";
 
 // Global Foods
 let rooms = [];

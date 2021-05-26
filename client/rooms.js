@@ -1,7 +1,7 @@
 const API_URL =
   window.location.hostname === "localhost"
     ? "http://localhost:5000/rooms"
-    : "https://fairmont-api.mateogalic112.vercel.app/rooms";
+    : "https://fairmont-api-mateogalic112.vercel.app/rooms";
 
 // Global Rooms
 let rooms = [];
