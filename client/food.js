@@ -1,17 +1,21 @@
-
 window.addEventListener("DOMContentLoaded", function () {
   listAllFoods();
   listAllWines();
 });
 
-const API_URL = window.location.hostname === 'localhost' ? 'http://localhost:5000/food' : 'https://fairmont-api.mateogalic112.vercel.app/food';
+const API_URL =
+  window.location.hostname === "localhost"
+    ? "http://localhost:5000/food"
+    : "https://fairmont-api.mateogalic112.vercel.app/food";
 
 // Global Foods
 let foods = [];
 
 // List All Foods
 function listAllFoods() {
-  fetch(API_URL)
+  fetch(API_URL, {
+    mode: "no-cors",
+  })
     .then((res) => res.json())
     .then((items) => {
       items.forEach((item) => {
@@ -104,7 +108,10 @@ function createMenuButtons() {
 /* Wine Area Start */
 
 // Wine URL
-const API_URL_W = window.location.hostname === 'localhost' ? 'http://localhost:5000/wine' : 'https://fairmont-api.mateogalic112.vercel.app/wine';
+const API_URL_W =
+  window.location.hostname === "localhost"
+    ? "http://localhost:5000/wine"
+    : "https://fairmont-api.mateogalic112.vercel.app/wine";
 
 // Global Wines
 let wines = [];
@@ -118,23 +125,23 @@ function listAllWines() {
         wines.push(item);
       });
       // Initial Wines
-      wineState(wines); 
+      wineState(wines);
     });
 }
 
 // Umetanje vina na stranicu
 function wineState(wineArray) {
-  let wineList = document.querySelector('.wine-list');
-  wineArray.map(wine => createWineArticle(wine, wineList));
+  let wineList = document.querySelector(".wine-list");
+  wineArray.map((wine) => createWineArticle(wine, wineList));
 }
 
 // Kreiranje Wine Carda
 function createWineArticle(wine, wineList) {
   let wineCard = document.createElement("div");
-  wineCard.classList.add('wine-card');
-  wine.category === 'red'
-    ? wineCard.classList.add('red')
-    : wineCard.classList.add('white');
+  wineCard.classList.add("wine-card");
+  wine.category === "red"
+    ? wineCard.classList.add("red")
+    : wineCard.classList.add("white");
   let wineCardContent = `
   <h4>${wine.name}</h4>
   <div class="card-body">
@@ -152,22 +159,22 @@ function createWineArticle(wine, wineList) {
 const rightArrow = document.querySelector(".fa-arrow-right");
 const leftArrow = document.querySelector(".fa-arrow-left");
 const wineList = document.querySelector(".wine-list");
-const wineListSize = document.getElementsByClassName('wine-card');
-const wineListWrapper = document.querySelector('.wine-list-wrapper');
+const wineListSize = document.getElementsByClassName("wine-card");
+const wineListWrapper = document.querySelector(".wine-list-wrapper");
 let wrapperPositionInfo = wineListWrapper.getBoundingClientRect();
 let wrapperWidth = wrapperPositionInfo.width;
 
 let counter = 0;
 
 rightArrow.addEventListener("click", () => {
-  if(counter < wineListSize.length - Math.round(wrapperWidth / 200) + 1) {
+  if (counter < wineListSize.length - Math.round(wrapperWidth / 200) + 1) {
     counter++;
     wineList.style.transform = `translateX(${-200 * counter}px)`;
   } else return;
 });
 
 leftArrow.addEventListener("click", () => {
-  if(counter > 0) {
+  if (counter > 0) {
     counter--;
     wineList.style.transform = `translateX(${-200 * counter}px)`;
   } else return;

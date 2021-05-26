@@ -1,12 +1,16 @@
-
-const API_URL = window.location.hostname === 'localhost' ? 'http://localhost:5000/rooms' : 'https://fairmont-api.mateogalic112.vercel.app/rooms';
+const API_URL =
+  window.location.hostname === "localhost"
+    ? "http://localhost:5000/rooms"
+    : "https://fairmont-api.mateogalic112.vercel.app/rooms";
 
 // Global Rooms
 let rooms = [];
 
 // List All Rooms
 function listAllRooms() {
-  fetch(API_URL)
+  fetch(API_URL, {
+    mode: "no-cors",
+  })
     .then((res) => res.json())
     .then((items) => {
       items.forEach((item) => {
@@ -182,7 +186,7 @@ function roomSelected(event) {
   var selectedRoomField = document.querySelector("#selectedRoom");
   var selectedRoomFieldH5 = selectedRoomField.querySelector("h5");
   selectedRoomFieldH5.innerText = selectedRoomName;
-  
+
   calculateTotal();
 }
 
@@ -198,10 +202,10 @@ function calculateTotal() {
   // Check In Date
   var checkInDate = document.getElementById("checkin");
   var date1 = new Date(checkInDate.value);
-  if(date1 < new Date()) {
+  if (date1 < new Date()) {
     alert("Arrival not valid!");
     checkInDate.value = null;
-  } 
+  }
   // Check Out Date
   var checkOutDate = document.getElementById("checkout");
   var date2 = new Date(checkOutDate.value);
@@ -214,7 +218,7 @@ function calculateTotal() {
 
   if (diffTime <= 0) {
     alert("Provide Valid Dates");
-  } 
+  }
   var diffInDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
 
   // Total Value
@@ -239,7 +243,7 @@ function submitBooking(event) {
   var selectedRoomFieldH5 = selectedRoomField.querySelector("h5");
   var custName = document.querySelector("#name").value;
   var custEmail = document.querySelector("#email").value;
-  
+
   var totalItem = document.querySelector(".total-container");
   var total = parseFloat(
     totalItem.querySelector("h4").innerText.replace("$", "")
@@ -248,9 +252,10 @@ function submitBooking(event) {
   var date1 = document.getElementById("checkin").value;
   var date2 = document.getElementById("checkout").value;
 
-  let desiredRoom = rooms.find(room => room.name === selectedRoomFieldH5.innerText);
+  let desiredRoom = rooms.find(
+    (room) => room.name === selectedRoomFieldH5.innerText
+  );
   let roomBookingDates = desiredRoom.booked;
-
 
   if (selectedRoomFieldH5.innerText === "Pick Your Room") {
     event.preventDefault();
@@ -258,18 +263,17 @@ function submitBooking(event) {
   } else if (total <= 0 || custName.length < 2 || custEmail.length == 0) {
     alert("Some fields are invalid!");
   } else {
-
-    if(checkRoomAvailability(date1, date2, roomBookingDates)) {
+    if (checkRoomAvailability(date1, date2, roomBookingDates)) {
       const UPDATE_ROOM_URL = `http://localhost:5000/${desiredRoom._id}`;
       const booked = [date1, date2];
-      
+
       fetch(UPDATE_ROOM_URL, {
-        method: 'PATCH',
+        method: "PATCH",
         body: JSON.stringify(booked),
         headers: {
-          "content-type": "application/json"
-        }
-      })
+          "content-type": "application/json",
+        },
+      });
     } else {
       event.preventDefault();
       return;
@@ -280,19 +284,21 @@ function submitBooking(event) {
       `Thank you ${costumerName} for choosing Fairmont for your dream Holiday!`
     );
   }
-
 }
 
 function checkRoomAvailability(date1, date2, roomBookingDates) {
-  for(let i = 0; i < roomBookingDates.length; ++i) {
-    if(date1 >= roomBookingDates[i][0] && date1 <= roomBookingDates[i][1]) {
+  for (let i = 0; i < roomBookingDates.length; ++i) {
+    if (date1 >= roomBookingDates[i][0] && date1 <= roomBookingDates[i][1]) {
       alert("Arriving date not available! Please try new arriving date!");
       checkInDate.value = null;
       return false;
-    } else if (date2 >= roomBookingDates[i][0] && date1 <= roomBookingDates[i][1]) {
-        alert("Departure date not available! Please try new departure date!");
-        checkOutDate.value = null;
-        return false;
+    } else if (
+      date2 >= roomBookingDates[i][0] &&
+      date1 <= roomBookingDates[i][1]
+    ) {
+      alert("Departure date not available! Please try new departure date!");
+      checkOutDate.value = null;
+      return false;
     }
   }
   return true;
