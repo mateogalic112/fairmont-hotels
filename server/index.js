@@ -4,6 +4,14 @@ const cors = require("cors");
 
 const app = express();
 
+const corsOpts = {
+  origin: "*",
+
+  methods: ["GET", "POST"],
+
+  allowedHeaders: ["Content-Type"],
+};
+
 app.use(function (req, res, next) {
   res.setHeader("Access-Control-Allow-Origin", "*");
   res.setHeader("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE");
@@ -12,7 +20,7 @@ app.use(function (req, res, next) {
   next();
 });
 
-app.use(cors());
+app.use(cors(corsOpts));
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
