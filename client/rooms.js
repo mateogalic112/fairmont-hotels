@@ -8,9 +8,7 @@ let rooms = [];
 
 // List All Rooms
 function listAllRooms() {
-  fetch(API_URL, {
-    mode: "no-cors",
-  })
+  fetch(API_URL)
     .then((res) => res.json())
     .then((items) => {
       items.forEach((item) => {

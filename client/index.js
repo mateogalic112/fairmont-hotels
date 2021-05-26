@@ -12,9 +12,7 @@ let rooms = [];
 
 // List All Foods
 function listAllFeaturedRooms() {
-  fetch(API_URL, {
-    mode: "no-cors",
-  })
+  fetch(API_URL)
     .then((res) => res.json())
     .then((items) => {
       items.forEach((item) => {
