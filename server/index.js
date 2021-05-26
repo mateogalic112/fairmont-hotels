@@ -15,7 +15,7 @@ const corsOpts = {
 app.use(function (req, res, next) {
   res.setHeader(
     "Access-Control-Allow-Origin",
-    "https://fairmont-hotels.vercel.app"
+    "fairmont-hotels-c9b5m6uzg-mateogalic112.vercel.app"
   );
   res.setHeader("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE");
   res.setHeader("Access-Control-Allow-Headers", "Content-Type");
