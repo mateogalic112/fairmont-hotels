@@ -4,6 +4,14 @@ const cors = require("cors");
 
 const app = express();
 
+app.use(function (req, res, next) {
+  res.setHeader("Access-Control-Allow-Origin", "*");
+  res.setHeader("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE");
+  res.setHeader("Access-Control-Allow-Headers", "Content-Type");
+  res.setHeader("Access-Control-Allow-Credentials", true);
+  next();
+});
+
 app.use(cors());
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
@@ -15,7 +23,7 @@ const wine = db.get("wine");
 
 app.get("/", (req, res) => {
   res.json({
-    message: "Hello World!"
+    message: "Hello World!",
   });
 });
 
@@ -42,8 +50,7 @@ app.patch("/:roomId", (req, res) => {
     rooms.update(
       { _id: req.params.roomId },
       { $addToSet: { booked: req.body } }
-    ); 
-
+    );
   } catch (err) {
     res.json(err);
   }
